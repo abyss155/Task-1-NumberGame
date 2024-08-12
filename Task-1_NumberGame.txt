@@ -1,0 +1,44 @@
+// CodSoft
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+class game {
+    public int Num;
+    public int InputNumber;
+
+    public int noOFGuesses=0;
+    game() {
+        Random RandomNum = new Random();
+        this.Num = RandomNum.nextInt(1, 100);
+    }
+
+    int takeUserInput() {
+        Scanner sc = new Scanner(System.in);
+        InputNumber = sc.nextInt();
+        return InputNumber;
+    }
+
+    public void IsCorrect() {
+        while (true) {
+            noOFGuesses++;
+            int num = takeUserInput();
+            if (num < Num) {
+                System.out.println("Too Low :");
+            } else if (num > Num) {
+                System.out.println("Too High :");
+            } else {
+                System.out.println("You Guessed it right!");
+                break;
+            }
+        }
+    }
+}
+public class Guess_game {
+    public static void main(String[] args) {
+        game pankaj = new game();
+        System.out.println("Guess the Number :");
+        pankaj.IsCorrect();
+        int val=pankaj.noOFGuesses;
+        System.out.println("The number of attempts you take to guess it is  "+val);
+    }
+}
